@@ -12,9 +12,8 @@ navigator.geolocation.getCurrentPosition(async position => {
 alert(resultado.data.city)
 });
 
-const cityInput = "Osasco";
+const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector("#search");
-
 const cityElement = document.querySelector("#city");
 const tempElement = document.querySelector("#temperature span");
 const descElement = document.querySelector("#description");
