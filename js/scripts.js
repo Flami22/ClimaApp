@@ -7,13 +7,14 @@ const weatherIconElement = document.querySelector("#weather-icon");
 const countryElement = document.querySelector("#country");
 const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
-alert("test")
+let lat = ""
+let long = ""
 const weatherContainer = document.querySelector("#weather-data");
 function getCurrentLocation() {
  if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(position => {
-   this.lat = position.coords.latitude;
-   this.long = position.coords.longitude;
+   lat = position.coords.latitude;
+   long = position.coords.longitude;
   });
  }
 else {
@@ -22,6 +23,8 @@ else {
 }
 
 getCurrentLocation()
+alert(lat)
+alert(long)
 const errorMessageContainer = document.querySelector("#error-message");
 const loader = document.querySelector("#loader");
 
