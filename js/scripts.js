@@ -9,10 +9,10 @@ const cityGeo = navigator.geolocation.getCurrentPosition(async position => {
  //  alert(position.coords.longitude);
 
    var resultado = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`).then(res => res.json())  
-return alert(resultado):
+return alert(resultado.data):
 });
-alert(cityGeo.city)
-const cityInput = cityGeo.city;
+alert(cityGeo.data.city)
+const cityInput = cityGeo.data.city;
 const searchBtn = document.querySelector("#search");
 
 const cityElement = document.querySelector("#city");
