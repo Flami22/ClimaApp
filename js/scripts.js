@@ -1,7 +1,6 @@
 const apiKey = "9e7111dce0955543da0f94e820dc6fea";
 const apiCountryURL = "https://countryflagsapi.com/png/";
 const apiUnsplash = "https://source.unsplash.com/1600x900/?";
-const searchBtn = document.querySelector("#search");
 const tempElement = document.querySelector("#temperature span");
 const descElement = document.querySelector("#description");
 const weatherIconElement = document.querySelector("#weather-icon");
@@ -10,7 +9,7 @@ const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
 
 const weatherContainer = document.querySelector("#weather-data");
- getCurrentLocation() {
+function getCurrentLocation() {
  if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(position => {
    this.lat = position.coords.latitude;
@@ -21,6 +20,8 @@ else {
  alert("Geolocation is not supported by this browser.");
  }
 }
+
+getCurrentLocation()
 const errorMessageContainer = document.querySelector("#error-message");
 const loader = document.querySelector("#loader");
 
@@ -32,7 +33,7 @@ const toggleLoader = () => {
   loader.classList.toggle("hide");
 };
 
-const getWeatherData = async (city) => {
+const getWeatherData = async () => {
   toggleLoader();
 
   const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q="Osasco"&units=metric&appid=${apiKey}&lang=pt_br`;
@@ -60,7 +61,7 @@ const hideInformation = () => {
 const showWeatherData = async (city) => {
   hideInformation();
 
-  const data = await getWeatherData(city);
+  const data = await getWeatherData();
 
   if (data.cod === "404") {
     showErrorMessage();
@@ -81,24 +82,7 @@ const showWeatherData = async (city) => {
   // Change bg image
   document.body.style.backgroundImage = `url("${apiUnsplash + city}")`;
 
-  weatherContainer.classList.remove("hide");
-};
-
-searchBtn.addEventListener("click", async (e) => {
-  e.preventDefault();
-
-  const city = cityInput.value;
-
-  showWeatherData(city);
-});
-
-cityInput.addEventListener("keyup", (e) => {
-  if (e.code === "Enter") {
-    const city = e.target.value;
-
-    showWeatherData(city);
-  }
-});
+  
 
 // Sugestões
 suggestionButtons.forEach((btn) => {
