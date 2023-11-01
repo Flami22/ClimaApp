@@ -9,7 +9,7 @@ navigator.geolocation.getCurrentPosition(async position => {
  //  alert(position.coords.longitude);
 
    var resultado = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`).then(res => res.json())  
-alert(resultado.data.city)
+return resultado.data.city
 });
 
 const cityInput = document.querySelector("#city-input");
