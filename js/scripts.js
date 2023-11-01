@@ -14,7 +14,18 @@ const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
 
 const weatherContainer = document.querySelector("#weather-data");
-
+const city = getCurrentLocation() {
+ if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(position => {
+   this.lat = position.coords.latitude;
+   this.long = position.coords.longitude;
+  });
+ }
+else {
+ alert("Geolocation is not supported by this browser.");
+ }
+}
+alert(city)
 const errorMessageContainer = document.querySelector("#error-message");
 const loader = document.querySelector("#loader");
 
