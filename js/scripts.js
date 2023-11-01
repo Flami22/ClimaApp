@@ -10,21 +10,13 @@ const windElement = document.querySelector("#wind span");
 let lat = ""
 let long = ""
 const weatherContainer = document.querySelector("#weather-data");
-function getCurrentLocation() {
- if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(position => {
-   lat = position.coords.latitude;
-   long = position.coords.longitude;
-  });
- }
-else {
- alert("Geolocation is not supported by this browser.");
- }
-}
 
-getCurrentLocation()
-alert(lat)
-alert(long)
+  navigator.geolocation.getCurrentPosition(position => {
+   alert(position.coords.latitude);
+   alert(position.coords.longitude);
+  });
+ 
+
 const errorMessageContainer = document.querySelector("#error-message");
 const loader = document.querySelector("#loader");
 
