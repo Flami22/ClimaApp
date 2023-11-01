@@ -1,11 +1,7 @@
 const apiKey = "9e7111dce0955543da0f94e820dc6fea";
 const apiCountryURL = "https://countryflagsapi.com/png/";
 const apiUnsplash = "https://source.unsplash.com/1600x900/?";
-
-const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector("#search");
-
-const cityElement = document.querySelector("#city");
 const tempElement = document.querySelector("#temperature span");
 const descElement = document.querySelector("#description");
 const weatherIconElement = document.querySelector("#weather-icon");
@@ -14,7 +10,7 @@ const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
 
 const weatherContainer = document.querySelector("#weather-data");
-const city = getCurrentLocation() {
+ getCurrentLocation() {
  if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(position => {
    this.lat = position.coords.latitude;
@@ -25,7 +21,6 @@ else {
  alert("Geolocation is not supported by this browser.");
  }
 }
-alert(city)
 const errorMessageContainer = document.querySelector("#error-message");
 const loader = document.querySelector("#loader");
 
@@ -40,7 +35,7 @@ const toggleLoader = () => {
 const getWeatherData = async (city) => {
   toggleLoader();
 
-  const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
+  const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q="Osasco"&units=metric&appid=${apiKey}&lang=pt_br`;
 
   const res = await fetch(apiWeatherURL);
   const data = await res.json();
