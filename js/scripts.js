@@ -2,15 +2,17 @@ const apiKey = "9e7111dce0955543da0f94e820dc6fea";
 const apiCountryURL = "https://countryflagsapi.com/png/";
 const apiUnsplash = "https://source.unsplash.com/1600x900/?";
 
-navigator.geolocation.getCurrentPosition(async position => {
+const cityGeo = navigator.geolocation.getCurrentPosition(async position => {
 
-   alert(position.coords.latitude);
+  // alert(position.coords.latitude);
 
-   alert(position.coords.longitude);
+ //  alert(position.coords.longitude);
 
-   var resultado = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`).then(res => res.json())  });
-alert(resultado.city)
-const cityInput = document.querySelector("#city-input");
+   var resultado = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`).then(res => res.json())  
+return resultado:
+});
+alert(cityGeo.city)
+const cityInput = cityGeo.city;
 const searchBtn = document.querySelector("#search");
 
 const cityElement = document.querySelector("#city");
