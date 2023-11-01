@@ -2,6 +2,8 @@ const apiKey = "9e7111dce0955543da0f94e820dc6fea";
 const apiCountryURL = "https://countryflagsapi.com/png/";
 const apiUnsplash = "https://source.unsplash.com/1600x900/?";
 
+alert();
+
 const cityGeo = navigator.geolocation.getCurrentPosition(async position => {
 
   // alert(position.coords.latitude);
