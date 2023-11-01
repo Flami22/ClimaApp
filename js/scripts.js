@@ -7,7 +7,7 @@ const weatherIconElement = document.querySelector("#weather-icon");
 const countryElement = document.querySelector("#country");
 const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
-
+alert("test")
 const weatherContainer = document.querySelector("#weather-data");
 function getCurrentLocation() {
  if (navigator.geolocation) {
