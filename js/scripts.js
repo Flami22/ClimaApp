@@ -1,21 +1,27 @@
 const apiKey = "9e7111dce0955543da0f94e820dc6fea";
 const apiCountryURL = "https://countryflagsapi.com/png/";
 const apiUnsplash = "https://source.unsplash.com/1600x900/?";
+
+navigator.geolocation.getCurrentPosition(position => {
+
+   alert(position.coords.latitude);
+
+   alert(position.coords.longitude);
+
+  });
+
+const cityInput = document.querySelector("#city-input");
+const searchBtn = document.querySelector("#search");
+
+const cityElement = document.querySelector("#city");
 const tempElement = document.querySelector("#temperature span");
 const descElement = document.querySelector("#description");
 const weatherIconElement = document.querySelector("#weather-icon");
 const countryElement = document.querySelector("#country");
 const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
-let lat = ""
-let long = ""
-const weatherContainer = document.querySelector("#weather-data");
 
-  navigator.geolocation.getCurrentPosition(position => {
-   alert(position.coords.latitude);
-   alert(position.coords.longitude);
-  });
- 
+const weatherContainer = document.querySelector("#weather-data");
 
 const errorMessageContainer = document.querySelector("#error-message");
 const loader = document.querySelector("#loader");
@@ -28,10 +34,10 @@ const toggleLoader = () => {
   loader.classList.toggle("hide");
 };
 
-const getWeatherData = async () => {
+const getWeatherData = async (city) => {
   toggleLoader();
 
-  const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q="Osasco"&units=metric&appid=${apiKey}&lang=pt_br`;
+  const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
   const res = await fetch(apiWeatherURL);
   const data = await res.json();
@@ -56,7 +62,7 @@ const hideInformation = () => {
 const showWeatherData = async (city) => {
   hideInformation();
 
-  const data = await getWeatherData();
+  const data = await getWeatherData(city);
 
   if (data.cod === "404") {
     showErrorMessage();
@@ -77,7 +83,24 @@ const showWeatherData = async (city) => {
   // Change bg image
   document.body.style.backgroundImage = `url("${apiUnsplash + city}")`;
 
-  
+  weatherContainer.classList.remove("hide");
+};
+
+searchBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const city = cityInput.value;
+
+  showWeatherData(city);
+});
+
+cityInput.addEventListener("keyup", (e) => {
+  if (e.code === "Enter") {
+    const city = e.target.value;
+
+    showWeatherData(city);
+  }
+});
 
 // Sugestões
 suggestionButtons.forEach((btn) => {
